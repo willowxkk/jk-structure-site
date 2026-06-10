@@ -1,0 +1,1621 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>日语 / 韩语句子结构成分总表 · v1.0</title>
+<style>
+:root {
+  --bg: #f6f2ed;
+  --paper: #fffdf8;
+  --ink: #201b17;
+  --muted: #746a60;
+  --line: #e3d8cc;
+  --soft: #f0e8dd;
+  --soft2: #fbf7f1;
+  --jp: #8f3f2b;
+  --jp-bg: #fff0e8;
+  --kr: #254f75;
+  --kr-bg: #eaf3fb;
+  --cn: #3d4b38;
+  --cn-bg: #edf5e9;
+  --accent: #68339d;
+  --accent-soft: #efe7f7;
+  --shadow: 0 18px 48px rgba(56, 37, 20, .08);
+  --radius: 22px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #fff8ed 0, var(--bg) 36%, #f4efe8 100%);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  line-height: 1.72;
+}
+a { color: inherit; text-decoration: none; }
+.page { display: grid; grid-template-columns: 292px minmax(0, 1fr); gap: 28px; max-width: 1440px; margin: 0 auto; padding: 28px; }
+.sidebar { position: sticky; top: 20px; align-self: start; height: calc(100vh - 40px); display: flex; flex-direction: column; gap: 14px; }
+.brand { background: rgba(255,253,248,.86); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); backdrop-filter: blur(18px); }
+.brand .version { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); background: var(--accent-soft); padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .03em; }
+.brand h1 { margin: 14px 0 10px; font-size: 25px; line-height: 1.18; letter-spacing: -.03em; }
+.brand p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+.controls { background: rgba(255,253,248,.86); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; box-shadow: var(--shadow); backdrop-filter: blur(18px); }
+.searchbox { display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: white; border-radius: 14px; padding: 10px 12px; }
+.searchbox span { color: var(--muted); font-size: 15px; }
+.searchbox input { width: 100%; border: 0; outline: 0; background: transparent; font-size: 14px; color: var(--ink); }
+.control-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+button, .filter-chip { border: 1px solid var(--line); background: #fffdf8; color: var(--ink); border-radius: 999px; padding: 7px 10px; font-size: 12px; cursor: pointer; }
+button:hover, .filter-chip:hover { border-color: #cdbfae; }
+.filter-chip.active { background: var(--ink); color: white; border-color: var(--ink); }
+.switch { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); margin-top: 10px; }
+.switch input { accent-color: var(--accent); }
+.results { display: none; max-height: 190px; overflow: auto; border-top: 1px solid var(--line); margin-top: 12px; padding-top: 10px; }
+.results.active { display: block; }
+.results .result-count { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+.results a { display: block; padding: 7px 9px; border-radius: 10px; font-size: 13px; color: var(--ink); }
+.results a:hover { background: var(--soft2); }
+.nav { flex: 1; min-height: 0; overflow: auto; background: rgba(255,253,248,.74); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px; box-shadow: var(--shadow); backdrop-filter: blur(18px); }
+.nav a { display: block; padding: 10px 11px; border-radius: 13px; margin-bottom: 4px; }
+.nav a:hover, .nav a.current { background: var(--soft); }
+.nav span { display: block; font-size: 13px; font-weight: 700; line-height: 1.35; }
+.nav small { display: block; color: var(--muted); font-size: 11px; margin-top: 2px; }
+.main { min-width: 0; }
+.hero { background: linear-gradient(135deg, rgba(255,253,248,.96), rgba(246,238,229,.9)); border: 1px solid var(--line); border-radius: 30px; padding: 34px; box-shadow: var(--shadow); margin-bottom: 22px; }
+.hero .eyebrow { color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.hero h2 { font-size: clamp(32px, 5vw, 58px); line-height: .98; letter-spacing: -.055em; margin: 12px 0 18px; max-width: 860px; }
+.hero p { max-width: 900px; color: var(--muted); margin: 0 0 18px; font-size: 16px; }
+.scan-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-top: 22px; }
+.scan-step { background: #fffdf8; border: 1px solid var(--line); border-radius: 18px; padding: 14px; min-height: 104px; }
+.scan-step b { display: inline-flex; width: 25px; height: 25px; border-radius: 50%; align-items: center; justify-content: center; background: var(--ink); color: white; font-size: 12px; margin-bottom: 8px; }
+.scan-step strong { display: block; font-size: 14px; margin-bottom: 4px; }
+.scan-step span { color: var(--muted); font-size: 12px; line-height: 1.6; display: block; }
+.legend { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+.legend-item { border-radius: 999px; padding: 5px 10px; font-size: 12px; border: 1px solid var(--line); background: #fff; }
+.legend-item.jp { color: var(--jp); background: var(--jp-bg); border-color: #f2cdbd; }
+.legend-item.kr { color: var(--kr); background: var(--kr-bg); border-color: #c9deef; }
+.legend-item.cn { color: var(--cn); background: var(--cn-bg); border-color: #ccdfc7; }
+.chapter { scroll-margin-top: 24px; background: rgba(255,253,248,.82); border: 1px solid var(--line); border-radius: 30px; margin-bottom: 22px; padding: 24px; box-shadow: var(--shadow); }
+.chapter.hidden, .card.hidden { display: none !important; }
+.chapter-head { display: flex; flex-direction: column; gap: 7px; padding: 4px 4px 16px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+.chapter-kicker { color: var(--accent); background: var(--accent-soft); width: fit-content; padding: 3px 9px; border-radius: 999px; font-size: 12px; font-weight: 800; }
+.chapter h2 { margin: 0; font-size: clamp(24px, 2.6vw, 38px); line-height: 1.18; letter-spacing: -.035em; }
+.card { background: #fffdf8; border: 1px solid var(--line); border-radius: 22px; margin: 12px 0; overflow: hidden; }
+.card summary { list-style: none; cursor: pointer; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid transparent; }
+.card[open] summary { border-bottom-color: var(--line); }
+.card summary::-webkit-details-marker { display: none; }
+.card summary h3 { margin: 0; font-size: 19px; line-height: 1.4; }
+.toggle-hint { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.card-body { padding: 18px; }
+.card-body > *:first-child { margin-top: 0; }
+.card-body p { margin: 10px 0; }
+h4 { margin: 22px 0 8px; font-size: 16px; }
+.note { background: #f9f4ee; border: 1px solid var(--line); border-left: 5px solid var(--accent); border-radius: 18px; padding: 14px 16px; margin: 12px 0; color: #4c433b; }
+.note p { margin: 6px 0; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 24px 0; }
+mark { background: #fff0a6; padding: 0 3px; border-radius: 5px; }
+strong { font-weight: 800; }
+.role { background: var(--soft2); border: 1px dashed #d9cbbb; border-radius: 15px; padding: 10px 12px; }
+.role span { display: inline-block; margin-right: 8px; color: var(--accent); font-weight: 800; }
+.mini-title, .language-label { font-weight: 800; color: #473d34; margin-top: 18px !important; }
+.example-line { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 10px; align-items: baseline; padding: 8px 11px; border-radius: 13px; margin: 6px 0; border: 1px solid transparent; }
+.ex-label { font-size: 12px; font-weight: 800; letter-spacing: .02em; }
+.ex-text { font-size: 16px; word-break: keep-all; overflow-wrap: anywhere; }
+.example-line.jp { background: var(--jp-bg); border-color: #f2d4c7; color: var(--jp); }
+.example-line.kr { background: var(--kr-bg); border-color: #cfe2f1; color: var(--kr); }
+.example-line.cn { background: var(--cn-bg); border-color: #d4e5d1; color: var(--cn); }
+.example-line.romaji, .example-line.roman { background: #f7f1ea; border-color: #eadfd3; color: #6b5e51; }
+.example-line.meaning { background: #f7f7f5; border-color: #e4e1dc; color: #403a34; }
+.footer { color: var(--muted); font-size: 12px; text-align: center; padding: 26px 0 8px; }
+@media (max-width: 980px) {
+  .page { grid-template-columns: 1fr; padding: 16px; }
+  .sidebar { position: relative; top: auto; height: auto; }
+  .nav { max-height: 280px; }
+  .scan-grid { grid-template-columns: 1fr; }
+  .hero { padding: 24px; }
+  .chapter { padding: 18px; border-radius: 24px; }
+  .example-line { grid-template-columns: 88px minmax(0, 1fr); }
+}
+@media print {
+  body { background: white; }
+  .page { display: block; max-width: none; padding: 0; }
+  .sidebar, .controls, .nav { display: none; }
+  .hero, .chapter { box-shadow: none; break-inside: avoid; }
+  .card { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="version">v1.0 · 独立冻结版</span>
+      <h1>日语 / 韩语句子结构成分总表</h1>
+      <p>用于识别真实句子里的结构成分：名词后小标签、谓词尾巴、连接关系、句尾语气、修饰、省略与口语缩略。</p>
+    </div>
+    <div class="controls">
+      <label class="searchbox"><span>⌕</span><input id="searchInput" placeholder="搜 が、って、요、지、名词化……" /></label>
+      <div class="control-row">
+        <button id="expandAll">全部展开</button>
+        <button id="collapseAll">全部收起</button>
+      </div>
+      <div class="control-row" id="chips">
+        <button class="filter-chip active" data-group="all">全部</button>
+        <button class="filter-chip" data-group="core">框架</button>
+        <button class="filter-chip" data-group="particles">助词</button>
+        <button class="filter-chip" data-group="predicate">谓词</button>
+        <button class="filter-chip" data-group="ending">句尾</button>
+        <button class="filter-chip" data-group="connector">连接</button>
+        <button class="filter-chip" data-group="spoken">口语</button>
+      </div>
+      <label class="switch"><input type="checkbox" id="onlyMatches" /> 只看搜索匹配项</label>
+      <div class="results" id="results"></div>
+    </div>
+    <nav class="nav" id="toc" aria-label="目录">
+      <a href="#日语-韩语句子结构成分总表" data-group="other"><span>日语 / 韩语句子结构成分总表</span><small>其他</small></a>
+<a href="#0-最底层框架-一句话通常在说什么" data-group="core"><span>0. 最底层框架</span><small>总框架 / 扫描顺序</small></a>
+<a href="#1-名词后面的结构标签-助词-조사" data-group="particles"><span>1. 名词后面的结构标签</span><small>助词 / 조사</small></a>
+<a href="#2-动词和形容词的尾巴-活用-어미" data-group="predicate"><span>2. 动词和形容词的尾巴</span><small>谓词尾巴 / 判断</small></a>
+<a href="#3-判断词-系词-是-不是-作为判断" data-group="predicate"><span>3. 判断词 / 系词</span><small>谓词尾巴 / 判断</small></a>
+<a href="#4-句尾语气成分" data-group="ending"><span>4. 句尾语气成分</span><small>句尾语气</small></a>
+<a href="#5-连接前后句子的成分" data-group="connector"><span>5. 连接前后句子的成分</span><small>连接关系</small></a>
+<a href="#6-名词化-把动作或句子变成-一个事情" data-group="modifier"><span>6. 名词化</span><small>名词化 / 修饰</small></a>
+<a href="#7-修饰结构-前面的东西修饰后面的名词" data-group="modifier"><span>7. 修饰结构</span><small>名词化 / 修饰</small></a>
+<a href="#8-礼貌层级-敬语系统" data-group="politeness"><span>8. 礼貌层级 / 敬语系统</span><small>礼貌 / 敬语</small></a>
+<a href="#9-省略-句子里不说出来的东西" data-group="ellipsis"><span>9. 省略</span><small>省略 / 词序</small></a>
+<a href="#10-词序-日韩语的默认顺序" data-group="ellipsis"><span>10. 词序</span><small>省略 / 词序</small></a>
+<a href="#11-副词-程度词-语气调节词" data-group="lexical"><span>11. 副词、程度词、语气调节词</span><small>指示 / 疑问 / 副词</small></a>
+<a href="#12-指示词-这个-那个-这里-那里" data-group="lexical"><span>12. 指示词</span><small>指示 / 疑问 / 副词</small></a>
+<a href="#13-疑问词-谁-什么-哪里-为什么-怎么" data-group="lexical"><span>13. 疑问词</span><small>指示 / 疑问 / 副词</small></a>
+<a href="#14-口语缩略-脱落-sns写法" data-group="spoken"><span>14. 口语缩略、脱落、SNS写法</span><small>口语 / SNS</small></a>
+<a href="#15-情绪-感叹-填充语" data-group="spoken"><span>15. 情绪、感叹、填充语</span><small>口语 / SNS</small></a>
+<a href="#16-最实用的扫描顺序" data-group="core"><span>16. 最实用的扫描顺序</span><small>总框架 / 扫描顺序</small></a>
+<a href="#17-最简总表-看到小东西时先归类" data-group="core"><span>17. 最简总表</span><small>总框架 / 扫描顺序</small></a>
+<a href="#18-这份表是否覆盖-几乎所有句子" data-group="core"><span>18. 这份表是否覆盖“几乎所有句子”</span><small>总框架 / 扫描顺序</small></a>
+<a href="#19-最后压缩成一句话" data-group="core"><span>19. 最后压缩成一句话</span><small>总框架 / 扫描顺序</small></a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <header class="hero">
+      <div class="eyebrow">Sentence Structure Map</div>
+      <h2>先识别结构，再理解内容。</h2>
+      <p>这版不是考试语法书，也不是词典。它的核心用途是：看到一句日语或韩语时，先判断句子里的“小东西”分别在标关系、时态、语气、连接、修饰，还是省略。</p>
+      <div class="scan-grid" aria-label="读句子扫描顺序">
+        <div class="scan-step"><b>1</b><strong>先看最后</strong><span>动作、状态、判断、否定、疑问，通常由句尾决定。</span></div>
+        <div class="scan-step"><b>2</b><strong>找名词后标签</strong><span>が、は、を、に、で；이/가、은/는、을/를、에。</span></div>
+        <div class="scan-step"><b>3</b><strong>看连接关系</strong><span>并列、原因、转折、条件、让步，决定前后怎么接。</span></div>
+        <div class="scan-step"><b>4</b><strong>看句尾语气</strong><span>疑问、确认、提醒、感叹、礼貌程度，都在这里变化。</span></div>
+        <div class="scan-step"><b>5</b><strong>补上下文省略</strong><span>我、你、这个，经常不说出来，先别急着硬补。</span></div>
+      </div>
+      <div class="legend">
+        <span class="legend-item jp">日语原句</span>
+        <span class="legend-item kr">韩语原句</span>
+        <span class="legend-item cn">中文意思</span>
+        <span class="legend-item">romaji / romanization</span>
+      </div>
+    </header>
+
+    <article id="content">
+      <section class="chapter" id="日语-韩语句子结构成分总表" data-group="other">
+<div class="chapter-head"><span class="chapter-kicker">其他</span><h2>日语 / 韩语句子结构成分总表</h2></div>
+<aside class="note"><p>这份文档的目标不是完整讲完语法，而是列出你在日语、韩语句子里会反复遇到的“结构成分”。</p><p>这里的“结构成分”指：它们不主要负责提供具体事物意义，而是负责告诉你句子里的词语之间是什么关系、动作处于什么状态、说话人是什么语气、前后句子如何连接。</p></aside>
+<p>可以把它理解成：</p>
+<p><strong>内容词负责“说什么”。</strong></p>
+<p>例如：我、你、肚子、饭、猫、雨、喜欢、吃、去、漂亮、饿。</p>
+<aside class="note"><p><strong>结构成分负责“这些内容词怎么组织起来”。</strong></p><p>例如：谁是主体、谁是对象、动作发生在哪里、是不是过去、是不是否定、是不是疑问、语气是否礼貌、前后是否转折。</p></aside>
+<hr>
+</section>
+<section class="chapter" id="0-最底层框架-一句话通常在说什么" data-group="core">
+<div class="chapter-head"><span class="chapter-kicker">总框架 / 扫描顺序</span><h2>0. 最底层框架：一句话通常在说什么</h2></div>
+<p>绝大多数句子都可以先粗略拆成这几种：</p>
+<details class="card" id="0-1-什么东西发生了什么" open data-card-title="0.1 什么东西发生了什么"><summary><h3>0.1 什么东西发生了什么</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line cn"><span class="ex-label">中文</span><span class="ex-text">雨下了。</span></div>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text">雨が降った。</span></div>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ame ga futta</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text">비가 왔어.</span></div>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">bi-ga wa-sseo</span></div>
+<p class="mini-title">核心结构：</p>
+<p><strong>雨｜发生了“下/来”的动作。</strong></p>
+</div></details>
+<details class="card" id="0-2-什么东西是什么样" open data-card-title="0.2 什么东西是什么样"><summary><h3>0.2 什么东西是什么样</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line cn"><span class="ex-label">中文</span><span class="ex-text">肚子饿了。</span></div>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text">お腹が空いた。</span></div>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">o-na-ka ga su-i-ta</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text">배가 고파.</span></div>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">bae-ga go-pa</span></div>
+<p class="mini-title">核心结构：</p>
+<p><strong>肚子｜处在“饿/空”的状态。</strong></p>
+</div></details>
+<details class="card" id="0-3-什么人做了什么" open data-card-title="0.3 什么人做了什么"><summary><h3>0.3 什么人做了什么</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line cn"><span class="ex-label">中文</span><span class="ex-text">我吃饭。</span></div>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text">私がご飯を食べる。</span></div>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">watashi ga gohan o taberu</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text">내가 밥을 먹어.</span></div>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">nae-ga ba-beul meo-geo</span></div>
+<p class="mini-title">核心结构：</p>
+<p><strong>我｜对饭｜做“吃”的动作。</strong></p>
+</div></details>
+<details class="card" id="0-4-什么东西是什么" open data-card-title="0.4 什么东西是什么"><summary><h3>0.4 什么东西是什么</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line cn"><span class="ex-label">中文</span><span class="ex-text">这是书。</span></div>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text">これは本です。</span></div>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">kore wa hon desu</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text">이건 책이야.</span></div>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">i-geon chae-gi-ya</span></div>
+<p class="mini-title">核心结构：</p>
+<p><strong>这个｜被判断为｜书。</strong></p>
+<p>所以阅读日语/韩语时，第一步可以永远问：</p>
+<p><mark><strong>这句话在说谁？说什么东西？发生了什么？是什么状态？对象是谁？语气是什么？</strong></mark></p>
+<hr>
+</div></details>
+</section>
+<section class="chapter" id="1-名词后面的结构标签-助词-조사" data-group="particles">
+<div class="chapter-head"><span class="chapter-kicker">助词 / 조사</span><h2>1. 名词后面的结构标签：助词 / 조사</h2></div>
+<p>日语叫：助詞 / じょし / joshi</p>
+<p>韩语叫：조사 / jo-sa</p>
+<p>它们通常贴在名词后面，告诉你这个名词在句子里的角色。</p>
+<p>这是日语和韩语里最关键的一类结构成分。</p>
+<hr>
+<details class="card" id="1-1-主体标记-が-이-가" open data-card-title="1.1 主体标记：が / 이、가"><summary><h3>1.1 主体标记：が / 이、가</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p class="role"><span>作用</span>标出前面的词是动作或状态的主体。</p>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>お腹が空いた。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">o-na-ka ga su-i-ta</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">肚子空了 / 我饿了。</span></div>
+<p><strong>雨が降った。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">a-me ga fut-ta</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">雨下了。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>배가 고파.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">bae-ga go-pa</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">肚子饿 / 我饿了。</span></div>
+<p><strong>비가 왔어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">bi-ga wa-sseo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">下雨了。</span></div>
+<p class="mini-title">先记：</p>
+<p><strong>が / 이、가 = 前面的东西，是后面动作或状态的主体。</strong></p>
+<hr>
+</div></details>
+<details class="card" id="1-2-主题标记-は-은-는" open data-card-title="1.2 主题标记：は / 은、는"><summary><h3>1.2 主题标记：は / 은、는</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p class="role"><span>作用</span>把前面的词拿出来，表示“至于它 / 说到它 / 关于它”。</p>
+<p>注意：日语 は 在助词里读 wa，不读 ha。</p>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>私は学生です。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">wa-ta-shi wa ga-ku-sei de-su</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">我呢，是学生。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>나는 학생이야.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">na-neun hak-saeng-i-ya</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">我呢，是学生。</span></div>
+<p>它和 が / 이、가 的区别先不用一次性学完。初期可以这样区分：</p>
+<p><strong>が / 이、가：标“谁是主体”。</strong></p>
+<p><strong>は / 은、는：把一个话题拿出来说。</strong></p>
+<p class="mini-title">例子：</p>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>猫がいる。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ne-ko ga i-ru</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">有猫。重点是“猫出现了”。</span></div>
+<p><strong>猫はいる。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ne-ko wa i-ru</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">猫是有的。可能暗含“狗没有”或“别的没有”。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>고양이가 있어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">go-yang-i-ga i-sseo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">有猫。</span></div>
+<p><strong>고양이는 있어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">go-yang-i-neun i-sseo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">猫是有的。</span></div>
+<hr>
+</div></details>
+<details class="card" id="1-3-动作对象标记-を-을-를" open data-card-title="1.3 动作对象标记：を / 을、를"><summary><h3>1.3 动作对象标记：を / 을、를</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p class="role"><span>作用</span>标出前面的词是动作作用的对象。</p>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>ご飯を食べる。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">go-han o ta-be-ru</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">吃饭。</span></div>
+<p><strong>音楽を聴く。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">on-ga-ku o ki-ku</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">听音乐。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>밥을 먹어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ba-beul meo-geo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">吃饭。</span></div>
+<p><strong>음악을 들어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">eu-ma-geul deu-reo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">听音乐。</span></div>
+<p class="mini-title">先记：</p>
+<p><strong>を / 을、를 = 前面的东西是被做动作的对象。</strong></p>
+<hr>
+</div></details>
+<details class="card" id="1-4-方向-目标-时间点-对象-に-에" open data-card-title="1.4 方向、目标、时间点、对象：に / 에"><summary><h3>1.4 方向、目标、时间点、对象：に / 에</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p>这一类很常见，也最容易混。先记它的核心感觉：</p>
+<p><strong>に / 에 = 指向一个点。</strong></p>
+<p>这个“点”可以是地点、时间点、目标、对象。</p>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>学校に行く。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">gak-kou ni i-ku</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去学校。</span></div>
+<p><strong>三時に会う。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">san-ji ni a-u</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">三点见。</span></div>
+<p><strong>友達に言う。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">to-mo-da-chi ni i-u</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">对朋友说。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>학교에 가.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">hak-gyo-e ga</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去学校。</span></div>
+<p><strong>세 시에 만나.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">se si-e man-na</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">三点见。</span></div>
+<p><strong>친구에게 말해.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">chin-gu-e-ge mal-hae</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">对朋友说。</span></div>
+<p>韩语里“给某人/对某人”的对象常用 에게 / 한테。</p>
+<hr>
+</div></details>
+<details class="card" id="1-5-动作发生地点-工具-方式-で-에서-로-으로" open data-card-title="1.5 动作发生地点、工具、方式：で / 에서、로、으로"><summary><h3>1.5 动作发生地点、工具、方式：で / 에서、로、으로</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p>日语 で 的核心感觉：</p>
+<p><strong>动作发生的场所 / 使用的工具 / 完成某事的方式。</strong></p>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>家で食べる。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-e de ta-be-ru</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">在家吃。</span></div>
+<p><strong>電車で行く。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">den-sha de i-ku</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">坐电车去。</span></div>
+<p><strong>日本語で話す。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ni-hon-go de ha-na-su</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">用日语说。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>집에서 먹어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ji-be-seo meo-geo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">在家吃。</span></div>
+<p><strong>전철로 가.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">jeon-cheol-lo ga</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">坐地铁/电车去。</span></div>
+<p><strong>일본어로 말해.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">il-bo-neo-ro mal-hae</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">用日语说。</span></div>
+<p class="mini-title">先记：</p>
+<p><strong>に / 에 更像“点”。</strong></p>
+<p><strong>で / 에서 更像“动作发生的场”。</strong></p>
+<hr>
+</div></details>
+<details class="card" id="1-6-所属-修饰-の-의" open data-card-title="1.6 所属、修饰：の / 의"><summary><h3>1.6 所属、修饰：の / 의</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p class="role"><span>作用</span>表示所属、来源、性质、修饰关系。</p>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>私の本。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">wa-ta-shi no hon</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">我的书。</span></div>
+<p><strong>日本の音楽。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ni-hon no on-ga-ku</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">日本的音乐。</span></div>
+<p><strong>赤い服の人。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">a-ka-i fu-ku no hi-to</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">穿红衣服的人。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>나의 책.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">na-ui chaek</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">我的书。</span></div>
+<p><strong>일본의 음악.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">il-bon-ui eu-mak</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">日本的音乐。</span></div>
+<p>韩语口语里 의 常常弱化或省略，或者读得接近 e。</p>
+<hr>
+</div></details>
+<details class="card" id="1-7-和-与-引用-と-와-과-하고-랑" open data-card-title="1.7 和、与、引用：と / 와、과、하고、랑"><summary><h3>1.7 和、与、引用：と / 와、과、하고、랑</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p>日语 と 有两个非常重要的作用。</p>
+<h4>1.7.1 表示“和”</h4>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>友達と行く。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">to-mo-da-chi to i-ku</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">和朋友去。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>친구와 가.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">chin-gu-wa ga</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">和朋友去。</span></div>
+<p><strong>친구랑 가.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">chin-gu-rang ga</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">和朋友去。更口语。</span></div>
+<h4>1.7.2 表示引用内容</h4>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>行くと言った。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ku to it-ta</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">他说“去”。/ 他说要去。</span></div>
+<p><strong>好きだと思う。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">su-ki da to o-mo-u</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">我觉得喜欢。/ 我觉得是喜欢。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>간다고 했어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">gan-da-go hae-sseo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">他说要去。</span></div>
+<p><strong>좋다고 생각해.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">jot-ta-go saeng-gak-hae</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">我觉得好。</span></div>
+<p>日语里口语引用经常用 って。</p>
+<p><strong>行くって言った。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ku tte it-ta</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">他说要去。</span></div>
+<hr>
+</div></details>
+<details class="card" id="1-8-方向-へ-로-으로-에" open data-card-title="1.8 方向：へ / 로、으로、에"><summary><h3>1.8 方向：へ / 로、으로、에</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p>日语 へ 在助词里读 e，不读 he。</p>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>東京へ行く。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">tou-kyou e i-ku</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去东京。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>도쿄로 가.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">do-kyo-ro ga</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去东京。</span></div>
+<p>に 和 へ 都可以表示去某处。粗略理解：</p>
+<p><strong>に 更像到达点。</strong></p>
+<p><strong>へ 更像朝某个方向。</strong></p>
+<p>日常里很多时候差别不大。</p>
+<hr>
+</div></details>
+<details class="card" id="1-9-起点和终点-から-まで-부터-까지" open data-card-title="1.9 起点和终点：から、まで / 부터、까지"><summary><h3>1.9 起点和终点：から、まで / 부터、까지</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>東京から大阪まで。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">tou-kyou ka-ra oo-sa-ka ma-de</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">从东京到大阪。</span></div>
+<p><strong>一時から三時まで。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-chi-ji ka-ra san-ji ma-de</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">从一点到三点。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>도쿄부터 오사카까지.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">do-kyo-bu-teo o-sa-ka-kka-ji</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">从东京到大阪。</span></div>
+<p><strong>한 시부터 세 시까지.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">han si-bu-teo se si-kka-ji</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">从一点到三点。</span></div>
+<p class="mini-title">先记：</p>
+<p><strong>から / 부터 = 从。</strong></p>
+<p><strong>まで / 까지 = 到。</strong></p>
+<hr>
+</div></details>
+<details class="card" id="1-10-也-连-只-都-も-しか-だけ-でも-도-만-밖에-라도" open data-card-title="1.10 也、连、只、都：も、しか、だけ、でも / 도、만、밖에、라도"><summary><h3>1.10 也、连、只、都：も、しか、だけ、でも / 도、만、밖에、라도</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p>这些属于副助词、限定助词一类。它们负责调节范围。</p>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>私も行く。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">wa-ta-shi mo i-ku</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">我也去。</span></div>
+<p><strong>これだけ。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ko-re da-ke</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">只有这个。</span></div>
+<p><strong>これしかない。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ko-re shi-ka na-i</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">只有这个。注意 しか 后面常接否定。</span></div>
+<p><strong>水でも飲む？</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">mi-zu de-mo no-mu</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">喝点水之类的吗？</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>나도 가.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">na-do ga</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">我也去。</span></div>
+<p><strong>이것만.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">i-geon-man</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">只有这个。</span></div>
+<p><strong>이것밖에 없어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">i-geot-ba-kke eop-seo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">只有这个。</span></div>
+<p><strong>물이라도 마실래?</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">mu-ri-ra-do ma-sil-lae</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">要不要喝点水之类的？</span></div>
+<hr>
+</div></details>
+<details class="card" id="1-11-疑问小标记-か-까-니-냐" open data-card-title="1.11 疑问小标记：か / 까、니、냐"><summary><h3>1.11 疑问小标记：か / 까、니、냐</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>行きますか。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ki-masu ka</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去吗？</span></div>
+<p>口语里也可以不用 か，直接靠升调：</p>
+<p><strong>行く？</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ku?</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去吗？</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>가요?</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga-yo?</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去吗？</span></div>
+<p><strong>갑니까?</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">gam-ni-kka?</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去吗？更正式。</span></div>
+<p><strong>가니? / 가냐?</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga-ni? / ga-nya?</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去吗？关系亲近或语气较直接。</span></div>
+<hr>
+</div></details>
+</section>
+<section class="chapter" id="2-动词和形容词的尾巴-活用-어미" data-group="predicate">
+<div class="chapter-head"><span class="chapter-kicker">谓词尾巴 / 判断</span><h2>2. 动词和形容词的尾巴：活用 / 어미</h2></div>
+<p>日语动词、形容词会变形。韩语谓词也会变形。</p>
+<p>这个部分很重要，因为你在真实句子里看到的词，经常不是词典形。</p>
+<p>例如：</p>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>空く / suku</strong> = 空、变空</p>
+<p><strong>空いた / suita</strong> = 空了</p>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>먹다 / meok-da</strong> = 吃</p>
+<p><strong>먹었어 / meo-geo-sseo</strong> = 吃了</p>
+<p>阅读时要养成一个动作：</p>
+<p><strong>看到变形 → 还原原形 → 再理解这个变形表达了什么。</strong></p>
+<hr>
+<details class="card" id="2-1-过去-完成" open data-card-title="2.1 过去 / 完成"><summary><h3>2.1 过去 / 完成</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>食べる。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ta-be-ru</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">吃。</span></div>
+<p><strong>食べた。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ta-be-ta</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">吃了。</span></div>
+<p><strong>行く。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ku</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去。</span></div>
+<p><strong>行った。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">it-ta</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去了。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>먹어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">meo-geo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">吃。</span></div>
+<p><strong>먹었어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">meo-geo-sseo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">吃了。</span></div>
+<p><strong>가.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去。</span></div>
+<p><strong>갔어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga-sseo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去了。</span></div>
+<hr>
+</div></details>
+<details class="card" id="2-2-否定" open data-card-title="2.2 否定"><summary><h3>2.2 否定</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>食べない。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ta-be-na-i</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">不吃。</span></div>
+<p><strong>行かない。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ka-na-i</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">不去。</span></div>
+<p>礼貌否定：</p>
+<p><strong>食べません。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ta-be-ma-sen</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">不吃。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>안 먹어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">an meo-geo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">不吃。</span></div>
+<p><strong>먹지 않아.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">meok-ji a-na</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">不吃。</span></div>
+<p><strong>안 가.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">an ga</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">不去。</span></div>
+<hr>
+</div></details>
+<details class="card" id="2-3-愿望-想做" open data-card-title="2.3 愿望：想做"><summary><h3>2.3 愿望：想做</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>食べたい。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ta-be-ta-i</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">想吃。</span></div>
+<p><strong>行きたい。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ki-ta-i</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">想去。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>먹고 싶어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">meok-go si-peo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">想吃。</span></div>
+<p><strong>가고 싶어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga-go si-peo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">想去。</span></div>
+<hr>
+</div></details>
+<details class="card" id="2-4-正在-持续状态" open data-card-title="2.4 正在、持续状态"><summary><h3>2.4 正在、持续状态</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>食べている。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ta-be-te i-ru</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">正在吃 / 吃着。</span></div>
+<p class="mini-title">口语缩短：</p>
+<p><strong>食べてる。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ta-be-te-ru</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">正在吃。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>먹고 있어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">meok-go i-sseo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">正在吃。</span></div>
+<hr>
+</div></details>
+<details class="card" id="2-5-经验-做过" open data-card-title="2.5 经验：做过"><summary><h3>2.5 经验：做过</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>行ったことがある。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">it-ta ko-to ga a-ru</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去过。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>가 본 적이 있어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga bon jeo-gi i-sseo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去过。</span></div>
+<hr>
+</div></details>
+<details class="card" id="2-6-可能-能做" open data-card-title="2.6 可能：能做"><summary><h3>2.6 可能：能做</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>食べられる。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ta-be-ra-re-ru</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">能吃 / 可食用。</span></div>
+<p><strong>できる。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">de-ki-ru</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">能做。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>먹을 수 있어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">meo-geul su i-sseo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">能吃。</span></div>
+<p><strong>할 수 있어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">hal su i-sseo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">能做。</span></div>
+<hr>
+</div></details>
+<details class="card" id="2-7-被动-被" open data-card-title="2.7 被动：被……"><summary><h3>2.7 被动：被……</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>言われた。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-wa-re-ta</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">被说了 / 被别人说。</span></div>
+<p><strong>見られた。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">mi-ra-re-ta</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">被看到了。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p>韩语被动形式比较分散，可以先认识这些：</p>
+<p><strong>보이다</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">bo-i-da</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">被看见 / 看起来。</span></div>
+<p><strong>들리다</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">deul-li-da</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">被听见 / 听得到。</span></div>
+<p><strong>받다</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">bat-da</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">接受，也可构成“被……”。</span></div>
+<p><strong>칭찬받았어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ching-chan-ba-da-sseo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">被表扬了。</span></div>
+<hr>
+</div></details>
+<details class="card" id="2-8-使役-让某人做" open data-card-title="2.8 使役：让某人做"><summary><h3>2.8 使役：让某人做</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>食べさせる。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ta-be-sa-se-ru</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">让某人吃。</span></div>
+<p><strong>行かせる。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ka-se-ru</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">让某人去。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>먹게 하다.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">meok-ge ha-da</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">让某人吃。</span></div>
+<p><strong>가게 하다.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga-ge ha-da</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">让某人去。</span></div>
+<p><strong>시키다</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">si-ki-da</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">使、让、命令做。</span></div>
+<hr>
+</div></details>
+<details class="card" id="2-9-条件-如果-的话" open data-card-title="2.9 条件：如果、的话"><summary><h3>2.9 条件：如果、的话</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>行けば。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ke-ba</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">如果去。</span></div>
+<p><strong>行ったら。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">it-ta-ra</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去了的话 / 如果去。</span></div>
+<p><strong>行くなら。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ku na-ra</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">如果要去的话。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>가면.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga-myeon</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">如果去。</span></div>
+<p><strong>간다면.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">gan-da-myeon</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">如果说要去的话。</span></div>
+<hr>
+</div></details>
+<details class="card" id="2-10-命令-请求-禁止" open data-card-title="2.10 命令、请求、禁止"><summary><h3>2.10 命令、请求、禁止</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>行って。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">it-te</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去一下 / 请去。口语请求。</span></div>
+<p><strong>行ってください。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">it-te ku-da-sa-i</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">请去。</span></div>
+<p><strong>行くな。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ku na</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">别去。</span></div>
+<p><strong>食べないで。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ta-be-na-i de</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">别吃。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>가.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去。也可能是命令，靠语气判断。</span></div>
+<p><strong>가 주세요.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga ju-se-yo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">请去。</span></div>
+<p><strong>가지 마.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga-ji ma</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">别去。</span></div>
+<hr>
+</div></details>
+<details class="card" id="2-11-推测-可能性-好像" open data-card-title="2.11 推测、可能性、好像"><summary><h3>2.11 推测、可能性、好像</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>行くかも。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ku ka-mo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">可能会去。</span></div>
+<p><strong>行くだろう。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ku da-rou</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">大概会去。</span></div>
+<p><strong>行くらしい。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ku ra-shii</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">听说会去 / 好像会去。</span></div>
+<p><strong>行くみたい。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ku mi-ta-i</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">好像会去。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>갈 것 같아.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">gal geot ga-ta</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">好像会去。</span></div>
+<p><strong>아마 갈 거야.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">a-ma gal geo-ya</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">大概会去。</span></div>
+<p><strong>가겠지.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga-get-ji</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">应该会去吧。</span></div>
+<hr>
+</div></details>
+</section>
+<section class="chapter" id="3-判断词-系词-是-不是-作为判断" data-group="predicate">
+<div class="chapter-head"><span class="chapter-kicker">谓词尾巴 / 判断</span><h2>3. 判断词 / 系词：是，不是，作为判断</h2></div>
+<p>它们负责让句子形成“X 是 Y”的判断。</p>
+<details class="card" id="3-1-日语-だ-です" open data-card-title="3.1 日语：だ、です"><summary><h3>3.1 日语：だ、です</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p><strong>これは本だ。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ko-re wa hon da</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">这是书。普通体。</span></div>
+<p><strong>これは本です。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ko-re wa hon de-su</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">这是书。礼貌体。</span></div>
+<p class="mini-title">否定：</p>
+<p><strong>本じゃない。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">hon ja na-i</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">不是书。</span></div>
+<p><strong>本ではありません。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">hon de-wa a-ri-ma-sen</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">不是书。更正式。</span></div>
+</div></details>
+<details class="card" id="3-2-韩语-이다-아니다" open data-card-title="3.2 韩语：이다、아니다"><summary><h3>3.2 韩语：이다、아니다</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p><strong>이건 책이야.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">i-geon chae-gi-ya</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">这是书。口语。</span></div>
+<p><strong>이것은 책입니다.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">i-geo-seun chae-gim-ni-da</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">这是书。正式。</span></div>
+<p class="mini-title">否定：</p>
+<p><strong>책이 아니야.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">chae-gi a-ni-ya</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">不是书。</span></div>
+<hr>
+</div></details>
+</section>
+<section class="chapter" id="4-句尾语气成分" data-group="ending">
+<div class="chapter-head"><span class="chapter-kicker">句尾语气</span><h2>4. 句尾语气成分</h2></div>
+<p>句尾成分负责改变语气。它们不一定有稳定中文对应词，但非常影响“这句话听起来是什么态度”。</p>
+<hr>
+<details class="card" id="4-1-日语常见句尾" open data-card-title="4.1 日语常见句尾"><summary><h3>4.1 日语常见句尾</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<h4>か / ka</h4>
+<p>表示疑问。</p>
+<p><strong>行きますか。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ki-masu ka</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去吗？</span></div>
+<h4>ね / ne</h4>
+<p>表示确认、共感、柔和地拉近对方。</p>
+<p><strong>いいね。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ii ne</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">不错啊 / 好呢。</span></div>
+<p><strong>寒いね。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">sa-mu-i ne</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">好冷啊，对吧。</span></div>
+<h4>よ / yo</h4>
+<p>表示提醒、告知、把信息推出去。</p>
+<p><strong>行くよ。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ku yo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">我要去哦 / 我去啦。</span></div>
+<h4>な / na</h4>
+<p>可以表示感叹，也可以表示禁止，取决于位置和语气。</p>
+<p><strong>すごいな。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">su-go-i na</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">好厉害啊。</span></div>
+<p><strong>行くな。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ku na</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">别去。</span></div>
+<h4>かな / ka-na</h4>
+<p>表示自言自语式疑问、犹豫。</p>
+<p><strong>行こうかな。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-kou ka-na</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">要不要去呢。</span></div>
+<h4>じゃん / jan</h4>
+<p>表示“这不是……嘛 / 原来就是……啊”。口语。</p>
+<p><strong>いいじゃん。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ii jan</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">不是挺好吗。</span></div>
+<h4>ぞ、ぜ / zo、ze</h4>
+<p>语气较强，偏男性化或漫画感，现实中要看人设和关系。</p>
+<p><strong>行くぞ。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ku zo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">走了！</span></div>
+<hr>
+</div></details>
+<details class="card" id="4-2-韩语常见句尾" open data-card-title="4.2 韩语常见句尾"><summary><h3>4.2 韩语常见句尾</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p>韩语句尾比日语更系统，也强烈体现礼貌程度。</p>
+<h4>요 / yo</h4>
+<p>礼貌但日常。</p>
+<p><strong>가요.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga-yo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去。</span></div>
+<p><strong>좋아요.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">jo-a-yo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">好 / 喜欢。</span></div>
+<h4>니、냐 / ni、nya</h4>
+<p>疑问。关系亲近或语气较直接。</p>
+<p><strong>가니?</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga-ni</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">你去吗？</span></div>
+<p><strong>가냐?</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga-nya</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去吗？更随便/直接。</span></div>
+<h4>까 / kka</h4>
+<p>正式疑问。</p>
+<p><strong>갑니까?</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">gam-ni-kka</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去吗？正式。</span></div>
+<h4>지 / ji</h4>
+<p>确认、推测、共识感，类似“吧 / 对吧 / 是吧”。</p>
+<p><strong>좋지?</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">jot-ji</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">不错吧？</span></div>
+<p><strong>가겠지.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga-get-ji</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">应该会去吧。</span></div>
+<h4>네 / ne</h4>
+<p>感叹、确认，有“呢/啊”的感觉。</p>
+<p><strong>좋네요.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">jon-ne-yo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">挺好啊。</span></div>
+<h4>군요 / gu-nyo</h4>
+<p>表示发现、感叹。</p>
+<p><strong>그렇군요.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">geu-reot-gu-nyo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">原来如此啊。</span></div>
+<hr>
+</div></details>
+</section>
+<section class="chapter" id="5-连接前后句子的成分" data-group="connector">
+<div class="chapter-head"><span class="chapter-kicker">连接关系</span><h2>5. 连接前后句子的成分</h2></div>
+<p>这一类负责告诉你：前后是并列、先后、原因、转折、条件，还是补充。</p>
+<hr>
+<details class="card" id="5-1-并列-动作连接-て-고" open data-card-title="5.1 并列、动作连接：て / 고"><summary><h3>5.1 并列、动作连接：て / 고</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>食べて寝る。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ta-be-te ne-ru</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">吃了再睡。</span></div>
+<p><strong>見て聞く。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">mi-te ki-ku</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">看并且听。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>먹고 자.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">meok-go ja</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">吃了睡。</span></div>
+<p><strong>보고 들어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">bo-go deu-reo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">看并且听。</span></div>
+<hr>
+</div></details>
+<details class="card" id="5-2-原因-から-ので-아서-어서-니까" open data-card-title="5.2 原因：から、ので / 아서、어서、니까"><summary><h3>5.2 原因：から、ので / 아서、어서、니까</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>雨だから行かない。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">a-me da-ka-ra i-ka-na-i</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">因为下雨，所以不去。</span></div>
+<p><strong>雨なので行きません。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">a-me na-no-de i-ki-ma-sen</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">因为下雨，所以不去。较柔和/正式。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>비가 와서 안 가.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">bi-ga wa-seo an ga</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">因为下雨，所以不去。</span></div>
+<p><strong>비가 오니까 안 가.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">bi-ga o-ni-kka an ga</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">因为下雨，所以不去。</span></div>
+<hr>
+</div></details>
+<details class="card" id="5-3-转折-けど-でも-が-지만-근데-하지만" open data-card-title="5.3 转折：けど、でも、が / 지만、근데、하지만"><summary><h3>5.3 转折：けど、でも、が / 지만、근데、하지만</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>雨だけど行く。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">a-me da-ke-do i-ku</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">虽然下雨，但去。</span></div>
+<p><strong>でも行く。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">de-mo i-ku</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">但是还是去。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>비가 오지만 가.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">bi-ga o-ji-man ga</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">虽然下雨，但去。</span></div>
+<p><strong>근데 가.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">geun-de ga</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">但是去。</span></div>
+<hr>
+</div></details>
+<details class="card" id="5-4-条件-如果" open data-card-title="5.4 条件：如果"><summary><h3>5.4 条件：如果</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>行くなら言って。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ku na-ra it-te</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">如果你要去，就说一声。</span></div>
+<p><strong>雨だったら行かない。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">a-me dat-ta-ra i-ka-na-i</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">如果下雨就不去。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>가면 말해.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga-myeon mal-hae</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">如果去，就说。</span></div>
+<p><strong>비가 오면 안 가.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">bi-ga o-myeon an ga</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">如果下雨就不去。</span></div>
+<hr>
+</div></details>
+<details class="card" id="5-5-让步-即使-就算" open data-card-title="5.5 让步：即使、就算"><summary><h3>5.5 让步：即使、就算</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>雨でも行く。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">a-me de-mo i-ku</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">即使下雨也去。</span></div>
+<p><strong>行ってもいい。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">it-te mo ii</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去了也可以 / 可以去。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>비가 와도 가.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">bi-ga wa-do ga</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">即使下雨也去。</span></div>
+<p><strong>가도 돼.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga-do dwae</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">可以去。</span></div>
+<hr>
+</div></details>
+</section>
+<section class="chapter" id="6-名词化-把动作或句子变成-一个事情" data-group="modifier">
+<div class="chapter-head"><span class="chapter-kicker">名词化 / 修饰</span><h2>6. 名词化：把动作或句子变成“一个事情”</h2></div>
+<p>这是日语、韩语非常重要的一类结构。</p>
+<p>它的作用是：</p>
+<p><strong>把“做某事 / 某个情况”变成一个可以被讨论的名词性对象。</strong></p>
+<p>中文里也有类似感觉，比如：</p>
+<p>我喜欢“唱歌”。</p>
+<p>“你来”这件事很重要。</p>
+<hr>
+<details class="card" id="6-1-日语-の-こと" open data-card-title="6.1 日语：の、こと"><summary><h3>6.1 日语：の、こと</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p><strong>歌うのが好き。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">u-ta-u no ga su-ki</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">喜欢唱歌。</span></div>
+<p><strong>行くことにした。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ku ko-to ni shi-ta</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">决定去。</span></div>
+<p>粗略区别：</p>
+<p><strong>の</strong> 更贴近日常、具体感、现场感。</p>
+<p><strong>こと</strong> 更像“事情、事项、概念”。</p>
+<hr>
+</div></details>
+<details class="card" id="6-2-韩语-것-기" open data-card-title="6.2 韩语：것、기"><summary><h3>6.2 韩语：것、기</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p><strong>노래하는 것이 좋아.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">no-rae-ha-neun geo-si jo-a</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">唱歌这件事很好 / 我喜欢唱歌。</span></div>
+<p><strong>가기 싫어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga-gi si-reo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">不想去。</span></div>
+<p><strong>먹는 것.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">meong-neun geot</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">吃的东西 / 吃这件事。</span></div>
+<hr>
+</div></details>
+</section>
+<section class="chapter" id="7-修饰结构-前面的东西修饰后面的名词" data-group="modifier">
+<div class="chapter-head"><span class="chapter-kicker">名词化 / 修饰</span><h2>7. 修饰结构：前面的东西修饰后面的名词</h2></div>
+<p>日语和韩语里，修饰语通常放在被修饰名词前面。</p>
+<details class="card" id="7-1-日语修饰名词" open data-card-title="7.1 日语修饰名词"><summary><h3>7.1 日语修饰名词</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p><strong>赤い服。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">a-ka-i fu-ku</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">红色的衣服。</span></div>
+<p><strong>昨日見た映画。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ki-nou mi-ta ei-ga</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">昨天看的电影。</span></div>
+<p><strong>私が好きな曲。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">wa-ta-shi ga su-ki na kyo-ku</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">我喜欢的歌。</span></div>
+</div></details>
+<details class="card" id="7-2-韩语修饰名词" open data-card-title="7.2 韩语修饰名词"><summary><h3>7.2 韩语修饰名词</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p><strong>빨간 옷.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ppal-gan ot</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">红色的衣服。</span></div>
+<p><strong>어제 본 영화.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">eo-je bon yeong-hwa</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">昨天看的电影。</span></div>
+<p><strong>내가 좋아하는 노래.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">nae-ga jo-a-ha-neun no-rae</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">我喜欢的歌。</span></div>
+<p>阅读时看到一长串放在名词前面的东西，要先判断：</p>
+<p><strong>它们可能都在修饰最后那个名词。</strong></p>
+<hr>
+</div></details>
+</section>
+<section class="chapter" id="8-礼貌层级-敬语系统" data-group="politeness">
+<div class="chapter-head"><span class="chapter-kicker">礼貌 / 敬语</span><h2>8. 礼貌层级 / 敬语系统</h2></div>
+<p>日语和韩语都非常重视说话关系。它们会通过句尾和词形表现礼貌、距离、尊敬。</p>
+<hr>
+<details class="card" id="8-1-日语-普通体和礼貌体" open data-card-title="8.1 日语：普通体和礼貌体"><summary><h3>8.1 日语：普通体和礼貌体</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p>普通体：</p>
+<p><strong>行く。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ku</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去。</span></div>
+<p>礼貌体：</p>
+<p><strong>行きます。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ki-ma-su</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去。</span></div>
+<p>普通过去：</p>
+<p><strong>行った。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">it-ta</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去了。</span></div>
+<p>礼貌过去：</p>
+<p><strong>行きました。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ki-ma-shi-ta</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去了。</span></div>
+<p>否定礼貌：</p>
+<p><strong>行きません。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ki-ma-sen</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">不去。</span></div>
+<hr>
+</div></details>
+<details class="card" id="8-2-日语尊敬语-谦让语" open data-card-title="8.2 日语尊敬语、谦让语"><summary><h3>8.2 日语尊敬语、谦让语</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p>这部分先认识，不急着掌握。</p>
+<p class="mini-title">尊敬语：抬高对方或第三方。</p>
+<p><strong>いらっしゃる</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-rassha-ru</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去、来、在 的尊敬说法。</span></div>
+<p class="mini-title">谦让语：降低自己，表示礼貌。</p>
+<p><strong>いただく</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ta-da-ku</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">得到、吃、喝 的谦让说法。</span></div>
+<hr>
+</div></details>
+<details class="card" id="8-3-韩语-해体-해요体-합니다体" open data-card-title="8.3 韩语：해体、해요体、합니다体"><summary><h3>8.3 韩语：해体、해요体、합니다体</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p>韩语礼貌层级更明显。</p>
+<p>非常口语/亲近：</p>
+<p><strong>가.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去。</span></div>
+<p>日常礼貌：</p>
+<p><strong>가요.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga-yo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去。</span></div>
+<p>正式礼貌：</p>
+<p><strong>갑니다.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">gam-ni-da</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去。</span></div>
+<p>疑问正式：</p>
+<p><strong>갑니까?</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">gam-ni-kka</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">去吗？</span></div>
+<p>尊敬成分：시 / si</p>
+<p><strong>가세요.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga-se-yo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">请去 / 您去。</span></div>
+<p><strong>드세요.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">deu-se-yo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">请吃。尊敬说法。</span></div>
+<hr>
+</div></details>
+</section>
+<section class="chapter" id="9-省略-句子里不说出来的东西" data-group="ellipsis">
+<div class="chapter-head"><span class="chapter-kicker">省略 / 词序</span><h2>9. 省略：句子里不说出来的东西</h2></div>
+<p>日语和韩语经常省略主语、宾语，尤其是“我、你、这个”。</p>
+<p>这对看 SNS 很关键。</p>
+<details class="card" id="9-1-日语省略" open data-card-title="9.1 日语省略"><summary><h3>9.1 日语省略</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p><strong>好き。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">su-ki</span></div>
+<p>可能意思：喜欢。/ 我喜欢。/ 我喜欢这个。/ 我喜欢你。</p>
+<p><strong>行く？</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ku</span></div>
+<p>可能意思：去吗？/ 你去吗？/ 要去吗？</p>
+<p><strong>見た。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">mi-ta</span></div>
+<p>可能意思：看了。/ 我看了。/ 你看了吗？</p>
+</div></details>
+<details class="card" id="9-2-韩语省略" open data-card-title="9.2 韩语省略"><summary><h3>9.2 韩语省略</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p><strong>좋아.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">jo-a</span></div>
+<p>可能意思：好。/ 喜欢。/ 我喜欢。/ 这个好。</p>
+<p><strong>가?</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ga</span></div>
+<p>可能意思：去吗？/ 你去吗？</p>
+<p><strong>봤어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">bwa-sseo</span></div>
+<p>可能意思：看了。/ 我看了。/ 你看了吗？</p>
+<p>阅读时不要急着补成“我”或“你”。先看上下文。</p>
+<hr>
+</div></details>
+</section>
+<section class="chapter" id="10-词序-日韩语的默认顺序" data-group="ellipsis">
+<div class="chapter-head"><span class="chapter-kicker">省略 / 词序</span><h2>10. 词序：日韩语的默认顺序</h2></div>
+<p>日语和韩语通常是 SOV 结构：</p>
+<p><strong>谁｜对什么｜做什么</strong></p>
+<p>也就是动词常在最后。</p>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>私がご飯を食べる。</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">wa-ta-shi ga go-han o ta-be-ru</span></div>
+<p>直译：我 饭 吃。</p>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>내가 밥을 먹어.</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">nae-ga ba-beul meo-geo</span></div>
+<p>直译：我 饭 吃。</p>
+<p>中文和英语更常见的是 SVO：</p>
+<div class="example-line cn"><span class="ex-label">中文</span><span class="ex-text">我吃饭。</span></div>
+<p>英语：I eat rice.</p>
+<p>阅读日语/韩语时要习惯：</p>
+<p><strong>真正决定动作的词，经常在最后。</strong></p>
+<p>所以一句长句不要从前面开始逐字翻译到崩溃，可以先看最后：</p>
+<p><strong>最后是动作？状态？判断？否定？疑问？</strong></p>
+<hr>
+</section>
+<section class="chapter" id="11-副词-程度词-语气调节词" data-group="lexical">
+<div class="chapter-head"><span class="chapter-kicker">指示 / 疑问 / 副词</span><h2>11. 副词、程度词、语气调节词</h2></div>
+<p>这些词有一定具体意义，但主要作用经常是调节强度、态度、概率、语气。</p>
+<details class="card" id="11-1-日语常见" open data-card-title="11.1 日语常见"><summary><h3>11.1 日语常见</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p><strong>めっちゃ</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">meccha</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">超、特别。口语。</span></div>
+<p><strong>すごく</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">su-go-ku</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">非常。</span></div>
+<p><strong>ちょっと</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">chot-to</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">一点、稍微；也常用于委婉。</span></div>
+<p><strong>たぶん</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ta-bun</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">大概。</span></div>
+<p><strong>やっぱり / やっぱ</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">yap-pa-ri / yap-pa</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">果然、还是。</span></div>
+<p><strong>もう</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">mou</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">已经；也可表示“真是的”。</span></div>
+<p><strong>まだ</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ma-da</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">还、尚未。</span></div>
+</div></details>
+<details class="card" id="11-2-韩语常见" open data-card-title="11.2 韩语常见"><summary><h3>11.2 韩语常见</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p><strong>너무</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">neo-mu</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">太、非常。</span></div>
+<p><strong>진짜</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">jin-jja</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">真的。</span></div>
+<p><strong>좀</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">jom</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">一点、稍微；也常用于委婉。</span></div>
+<p><strong>아마</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">a-ma</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">大概。</span></div>
+<p><strong>역시</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">yeok-si</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">果然。</span></div>
+<p><strong>벌써</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">beol-sseo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">已经、这么快就。</span></div>
+<p><strong>아직</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">a-jik</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">还、尚未。</span></div>
+<hr>
+</div></details>
+</section>
+<section class="chapter" id="12-指示词-这个-那个-这里-那里" data-group="lexical">
+<div class="chapter-head"><span class="chapter-kicker">指示 / 疑问 / 副词</span><h2>12. 指示词：这个、那个、这里、那里</h2></div>
+<p>指示词有具体意义，但它们也承担结构定位功能：把谈话对象定位出来。</p>
+<details class="card" id="12-1-日语-こそあど体系" open data-card-title="12.1 日语：こそあど体系"><summary><h3>12.1 日语：こそあど体系</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p>日语很常见：こ / そ / あ / ど</p>
+<p>粗略理解：</p>
+<p><strong>こ = 近我，这个。</strong></p>
+<p><strong>そ = 近你，那个；或刚提到的。</strong></p>
+<p><strong>あ = 离双方都远，那个。</strong></p>
+<p><strong>ど = 哪个。</strong></p>
+<p class="mini-title">例子：</p>
+<p><strong>これ</strong> / kore = 这个</p>
+<p><strong>それ</strong> / sore = 那个</p>
+<p><strong>あれ</strong> / are = 那个</p>
+<p><strong>どれ</strong> / dore = 哪个</p>
+<p><strong>ここ</strong> / koko = 这里</p>
+<p><strong>そこ</strong> / soko = 那里</p>
+<p><strong>あそこ</strong> / asoko = 那里</p>
+<p><strong>どこ</strong> / doko = 哪里</p>
+<p><strong>この曲</strong> / kono kyoku = 这首歌</p>
+<p><strong>その曲</strong> / sono kyoku = 那首歌</p>
+<p><strong>あの曲</strong> / ano kyoku = 那首歌</p>
+<p><strong>どの曲</strong> / dono kyoku = 哪首歌</p>
+</div></details>
+<details class="card" id="12-2-韩语-이-그-저-어느" open data-card-title="12.2 韩语：이、그、저、어느"><summary><h3>12.2 韩语：이、그、저、어느</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p>韩语粗略对应：</p>
+<p><strong>이 = 这。</strong></p>
+<p><strong>그 = 那；也可指刚提到的。</strong></p>
+<p><strong>저 = 那，离双方都远。</strong></p>
+<p><strong>어느 = 哪个。</strong></p>
+<p class="mini-title">例子：</p>
+<p><strong>이거</strong> / i-geo = 这个</p>
+<p><strong>그거</strong> / geu-geo = 那个</p>
+<p><strong>저거</strong> / jeo-geo = 那个</p>
+<p><strong>어느 것</strong> / eo-neu geot = 哪个</p>
+<p><strong>여기</strong> / yeo-gi = 这里</p>
+<p><strong>거기</strong> / geo-gi = 那里</p>
+<p><strong>저기</strong> / jeo-gi = 那里</p>
+<p><strong>어디</strong> / eo-di = 哪里</p>
+<hr>
+</div></details>
+</section>
+<section class="chapter" id="13-疑问词-谁-什么-哪里-为什么-怎么" data-group="lexical">
+<div class="chapter-head"><span class="chapter-kicker">指示 / 疑问 / 副词</span><h2>13. 疑问词：谁、什么、哪里、为什么、怎么</h2></div>
+<p>这类词有内容意义，但它们负责打开句子的提问结构。</p>
+<details class="card" id="13-1-日语" open data-card-title="13.1 日语"><summary><h3>13.1 日语</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p><strong>誰 / だれ / da-re</strong> = 谁</p>
+<p><strong>何 / なに、なん / na-ni、nan</strong> = 什么</p>
+<p><strong>どこ / do-ko</strong> = 哪里</p>
+<p><strong>いつ / i-tsu</strong> = 什么时候</p>
+<p><strong>なぜ / na-ze</strong> = 为什么，较正式</p>
+<p><strong>なんで / nan-de</strong> = 为什么，口语</p>
+<p><strong>どう / dou</strong> = 怎么样</p>
+<p><strong>どれ / do-re</strong> = 哪个</p>
+<p class="mini-title">例子：</p>
+<p><strong>誰が来る？</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">da-re ga ku-ru</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">谁来？</span></div>
+<p><strong>何を食べる？</strong></p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">na-ni o ta-be-ru</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">吃什么？</span></div>
+</div></details>
+<details class="card" id="13-2-韩语" open data-card-title="13.2 韩语"><summary><h3>13.2 韩语</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p><strong>누구 / nu-gu</strong> = 谁</p>
+<p><strong>뭐 / mwo</strong> = 什么</p>
+<p><strong>어디 / eo-di</strong> = 哪里</p>
+<p><strong>언제 / eon-je</strong> = 什么时候</p>
+<p><strong>왜 / wae</strong> = 为什么</p>
+<p><strong>어떻게 / eo-tteo-ke</strong> = 怎么</p>
+<p><strong>어느 / eo-neu</strong> = 哪个</p>
+<p class="mini-title">例子：</p>
+<p><strong>누가 와?</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">nu-ga wa</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">谁来？</span></div>
+<p><strong>뭐 먹어?</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">mwo meo-geo</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">吃什么？</span></div>
+<hr>
+</div></details>
+</section>
+<section class="chapter" id="14-口语缩略-脱落-sns写法" data-group="spoken">
+<div class="chapter-head"><span class="chapter-kicker">口语 / SNS</span><h2>14. 口语缩略、脱落、SNS写法</h2></div>
+<p>看 SNS 时会遇到大量非标准完整句。</p>
+<details class="card" id="14-1-日语常见" open data-card-title="14.1 日语常见"><summary><h3>14.1 日语常见</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p><strong>ている → てる</strong></p>
+<p>食べている → 食べてる</p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ta-be-te i-ru → ta-be-te-ru</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">正在吃。</span></div>
+<p><strong>では → じゃ</strong></p>
+<p>本ではない → 本じゃない</p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">hon de-wa na-i → hon ja na-i</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">不是书。</span></div>
+<p><strong>という → って</strong></p>
+<p>好きだという → 好きだって</p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">su-ki da to iu → su-ki datte</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">说是喜欢 / 听说喜欢。</span></div>
+<p><strong>てしまう → ちゃう</strong></p>
+<p>食べてしまう → 食べちゃう</p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">ta-be-te shi-ma-u → ta-be-cha-u</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">吃掉了 / 不小心吃了 / 还是会吃。</span></div>
+<p><strong>なければ → なきゃ</strong></p>
+<p>行かなければ → 行かなきゃ</p>
+<div class="example-line romaji"><span class="ex-label">romaji</span><span class="ex-text">i-ka-na-ke-re-ba → i-ka-na-kya</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">必须去。</span></div>
+</div></details>
+<details class="card" id="14-2-韩语常见" open data-card-title="14.2 韩语常见"><summary><h3>14.2 韩语常见</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p><strong>것이 → 게</strong></p>
+<p>하는 것이 → 하는 게</p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">ha-neun geo-si → ha-neun ge</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">做这件事。</span></div>
+<p><strong>나는 → 난</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">na-neun → nan</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">我呢。</span></div>
+<p><strong>너는 → 넌</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">neo-neun → neon</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">你呢。</span></div>
+<p><strong>것 같아 → 거 같아</strong></p>
+<div class="example-line roman"><span class="ex-label">romanization</span><span class="ex-text">geot ga-ta → geo ga-ta</span></div>
+<div class="example-line meaning"><span class="ex-label">意思</span><span class="ex-text">好像。</span></div>
+<p><strong>하고 싶어 → 하고 싶어 / 하구 싶어</strong></p>
+<p>后者更口语/可爱化，具体要看写法和人。</p>
+<hr>
+</div></details>
+</section>
+<section class="chapter" id="15-情绪-感叹-填充语" data-group="spoken">
+<div class="chapter-head"><span class="chapter-kicker">口语 / SNS</span><h2>15. 情绪、感叹、填充语</h2></div>
+<p>这些在 SNS 里非常常见。它们有意义，但更多承担情绪和节奏功能。</p>
+<details class="card" id="15-1-日语" open data-card-title="15.1 日语"><summary><h3>15.1 日语</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p><strong>ああ / aa</strong> = 啊。</p>
+<p><strong>えっ / e</strong> = 诶？</p>
+<p><strong>うわ / uwa</strong> = 哇、天啊。</p>
+<p><strong>まじ / maji</strong> = 真的吗 / 真的。</p>
+<p><strong>やばい / yabai</strong> = 糟糕、厉害、不得了，意义看语境。</p>
+<p><strong>かわいい / kawaii</strong> = 可爱。</p>
+<p><strong>しんどい / shindoi</strong> = 累、难受、吃不消。</p>
+<p><strong>尊い / toutoi</strong> = 太尊了、太值得珍惜了，粉丝语境常见。</p>
+</div></details>
+<details class="card" id="15-2-韩语" open data-card-title="15.2 韩语"><summary><h3>15.2 韩语</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p><strong>아 / a</strong> = 啊。</p>
+<p><strong>어 / eo</strong> = 哦、诶。</p>
+<p><strong>와 / wa</strong> = 哇。</p>
+<p><strong>헐 / heol</strong> = 天啊、离谱。</p>
+<p><strong>진짜 / jin-jja</strong> = 真的。</p>
+<p><strong>대박 / dae-bak</strong> = 厉害、大发、绝了。</p>
+<p><strong>귀여워 / gwi-yeo-wo</strong> = 可爱。</p>
+<p><strong>힘들어 / him-deu-reo</strong> = 累、辛苦。</p>
+<hr>
+</div></details>
+</section>
+<section class="chapter" id="16-最实用的扫描顺序" data-group="core">
+<div class="chapter-head"><span class="chapter-kicker">总框架 / 扫描顺序</span><h2>16. 最实用的扫描顺序</h2></div>
+<p>以后看到一句日语/韩语，不要先逐字翻译。先按这个顺序扫：</p>
+<details class="card" id="第一步-先看最后" open data-card-title="第一步：先看最后"><summary><h3>第一步：先看最后</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p>最后是动词、形容词、名词判断，还是疑问？</p>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>行った。</strong> = 去了。</p>
+<p><strong>行かない。</strong> = 不去。</p>
+<p><strong>行きたい。</strong> = 想去。</p>
+<p><strong>行く？</strong> = 去吗？</p>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>갔어.</strong> = 去了。</p>
+<p><strong>안 가.</strong> = 不去。</p>
+<p><strong>가고 싶어.</strong> = 想去。</p>
+<p><strong>가?</strong> = 去吗？</p>
+</div></details>
+<details class="card" id="第二步-找名词后面的小标签" open data-card-title="第二步：找名词后面的小标签"><summary><h3>第二步：找名词后面的小标签</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text">が、は、を、に、で、の、と、から、まで、も、だけ。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text">이/가、은/는、을/를、에、에서、의、와/과、부터、까지、도、만。</span></div>
+<p>这些通常告诉你：</p>
+<p>谁是主体。</p>
+<p>谁是对象。</p>
+<p>在哪里。</p>
+<p>向哪里。</p>
+<p>从哪里到哪里。</p>
+<p>属于谁。</p>
+<p>和谁。</p>
+<p>也、只、都。</p>
+</div></details>
+<details class="card" id="第三步-看有没有连接词" open data-card-title="第三步：看有没有连接词"><summary><h3>第三步：看有没有连接词</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text">て、けど、から、ので、なら、たら、でも。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text">고、지만、아서/어서、니까、면、도。</span></div>
+<p>它们告诉你前后关系：</p>
+<p>并列。</p>
+<p>先后。</p>
+<p>原因。</p>
+<p>转折。</p>
+<p>条件。</p>
+<p>让步。</p>
+</div></details>
+<details class="card" id="第四步-看有没有句尾语气" open data-card-title="第四步：看有没有句尾语气"><summary><h3>第四步：看有没有句尾语气</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text">ね、よ、か、な、かな、じゃん。</span></div>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text">요、죠、네、지、까、니、냐。</span></div>
+<p>它们告诉你：</p>
+<p>是不是疑问。</p>
+<p>是不是确认。</p>
+<p>是不是提醒。</p>
+<p>是不是感叹。</p>
+<p>说话人和对方距离远近。</p>
+</div></details>
+<details class="card" id="第五步-补省略" open data-card-title="第五步：补省略"><summary><h3>第五步：补省略</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p>问自己：</p>
+<p>这句话省略了“我”吗？</p>
+<p>省略了“你”吗？</p>
+<p>省略了“这个东西”吗？</p>
+<p>需要靠上文补吗？</p>
+<hr>
+</div></details>
+</section>
+<section class="chapter" id="17-最简总表-看到小东西时先归类" data-group="core">
+<div class="chapter-head"><span class="chapter-kicker">总框架 / 扫描顺序</span><h2>17. 最简总表：看到小东西时先归类</h2></div>
+<details class="card" id="17-1-名词后面出现的小东西" open data-card-title="17.1 名词后面出现的小东西"><summary><h3>17.1 名词后面出现的小东西</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p>大概率是：</p>
+<p><strong>助词 / 关系标签。</strong></p>
+<p>它负责告诉你前面的名词是什么角色。</p>
+<p class="mini-title">例子：</p>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>猫が</strong> = 猫是主体。</p>
+<p><strong>猫を</strong> = 猫是对象。</p>
+<p><strong>猫に</strong> = 对猫 / 给猫 / 到猫那里。</p>
+<p><strong>猫の</strong> = 猫的。</p>
+<p><strong>猫と</strong> = 和猫。</p>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>고양이가</strong> = 猫是主体。</p>
+<p><strong>고양이를</strong> = 猫是对象。</p>
+<p><strong>고양이에게</strong> = 对猫 / 给猫。</p>
+<p><strong>고양이의</strong> = 猫的。</p>
+<p><strong>고양이와</strong> = 和猫。</p>
+</div></details>
+<details class="card" id="17-2-动词尾巴变了" open data-card-title="17.2 动词尾巴变了"><summary><h3>17.2 动词尾巴变了</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p>大概率是：</p>
+<p><strong>时态、否定、愿望、可能、被动、使役、条件、礼貌。</strong></p>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>食べる</strong> = 吃。</p>
+<p><strong>食べた</strong> = 吃了。</p>
+<p><strong>食べない</strong> = 不吃。</p>
+<p><strong>食べたい</strong> = 想吃。</p>
+<p><strong>食べられる</strong> = 能吃 / 被吃。</p>
+<p><strong>食べさせる</strong> = 让吃。</p>
+<p><strong>食べれば</strong> = 如果吃。</p>
+<p><strong>食べます</strong> = 吃，礼貌。</p>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>먹어</strong> = 吃。</p>
+<p><strong>먹었어</strong> = 吃了。</p>
+<p><strong>안 먹어</strong> = 不吃。</p>
+<p><strong>먹고 싶어</strong> = 想吃。</p>
+<p><strong>먹을 수 있어</strong> = 能吃。</p>
+<p><strong>먹게 해</strong> = 让吃。</p>
+<p><strong>먹으면</strong> = 如果吃。</p>
+<p><strong>먹어요</strong> = 吃，礼貌。</p>
+</div></details>
+<details class="card" id="17-3-句子最后的小东西" open data-card-title="17.3 句子最后的小东西"><summary><h3>17.3 句子最后的小东西</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p>大概率是：</p>
+<p><strong>语气、疑问、礼貌、确认、感叹。</strong></p>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>行くか。</strong> = 去吗？</p>
+<p><strong>行くよ。</strong> = 我去哦。</p>
+<p><strong>行くね。</strong> = 去哦 / 去呢。</p>
+<p><strong>行こうかな。</strong> = 要不要去呢。</p>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>가요.</strong> = 去，礼貌。</p>
+<p><strong>가죠.</strong> = 去吧 / 去对吧。</p>
+<p><strong>가니?</strong> = 去吗？</p>
+<p><strong>가네요.</strong> = 去啊 / 原来去啊。</p>
+</div></details>
+<details class="card" id="17-4-句子中间连接处的小东西" open data-card-title="17.4 句子中间连接处的小东西"><summary><h3>17.4 句子中间连接处的小东西</h3><span class="toggle-hint">展开 / 收起</span></summary><div class="card-body">
+<p>大概率是：</p>
+<p><strong>连接前后关系。</strong></p>
+<div class="example-line jp"><span class="ex-label">日语</span><span class="ex-text"></span></div>
+<p><strong>食べて寝る。</strong> = 吃了睡。</p>
+<p><strong>雨だけど行く。</strong> = 虽然下雨但去。</p>
+<p><strong>雨だから行かない。</strong> = 因为下雨所以不去。</p>
+<div class="example-line kr"><span class="ex-label">韩语</span><span class="ex-text"></span></div>
+<p><strong>먹고 자.</strong> = 吃了睡。</p>
+<p><strong>비가 오지만 가.</strong> = 虽然下雨但去。</p>
+<p><strong>비가 와서 안 가.</strong> = 因为下雨所以不去。</p>
+<hr>
+</div></details>
+</section>
+<section class="chapter" id="18-这份表是否覆盖-几乎所有句子" data-group="core">
+<div class="chapter-head"><span class="chapter-kicker">总框架 / 扫描顺序</span><h2>18. 这份表是否覆盖“几乎所有句子”</h2></div>
+<p>对于日常 SNS、短采访、评论、口语、普通歌词说明，这份结构地图可以覆盖大部分句子的分析入口。</p>
+<p>但它不是“所有语法现象的最终全集”。因为语言里还有更细的东西，例如：</p>
+<p>复杂敬语。</p>
+<p>古语残留。</p>
+<p>方言。</p>
+<p>歌词里的省略和倒装。</p>
+<p>网络梗。</p>
+<p>文学性表达。</p>
+<p>固定搭配。</p>
+<p>拟声拟态词。</p>
+<p>非常细的助词差异。</p>
+<p>长句里的多层嵌套修饰。</p>
+<p>不过作为入门阅读框架，它已经足够你把绝大多数真实句子先“拆开”。</p>
+<p>你接下来看到一句话时，可以直接套这个模型：</p>
+<p><strong>内容词是什么？</strong></p>
+<p><strong>名词后面有没有助词？</strong></p>
+<p><strong>动词/形容词尾巴有没有变化？</strong></p>
+<p><strong>中间有没有连接关系？</strong></p>
+<p><strong>句尾有没有语气？</strong></p>
+<p><strong>有没有省略？</strong></p>
+<p>只要能完成这六步，你就不是在面对一团字符，而是在面对一套可以拆解的结构。</p>
+<hr>
+</section>
+<section class="chapter" id="19-最后压缩成一句话" data-group="core">
+<div class="chapter-head"><span class="chapter-kicker">总框架 / 扫描顺序</span><h2>19. 最后压缩成一句话</h2></div>
+<p>日语和韩语的句子，不要先按中文逐字翻译。</p>
+<p>应该先看：</p>
+<p><strong>谁 / 什么东西，被哪个小标签标出来；最后的谓词说它发生了什么、是什么状态；中间的连接成分说明前后关系；句尾说明语气和礼貌程度。</strong></p>
+<p>这就是最核心的阅读入口。</p>
+</section>
+    </article>
+    <div class="footer">v1.0 · standalone html · 可作为以后专题页入口的原始冻结版本</div>
+  </main>
+</div>
+
+<script>
+(function() {
+  const searchInput = document.getElementById('searchInput');
+  const onlyMatches = document.getElementById('onlyMatches');
+  const results = document.getElementById('results');
+  const cards = Array.from(document.querySelectorAll('.card'));
+  const chapters = Array.from(document.querySelectorAll('.chapter'));
+  const chips = Array.from(document.querySelectorAll('.filter-chip'));
+  let currentGroup = 'all';
+
+  function normalize(s) { return (s || '').toLowerCase().trim(); }
+
+  function cardTitle(card) {
+    const h = card.querySelector('h3');
+    return h ? h.textContent.trim() : card.id;
+  }
+
+  function updateResults(q) {
+    const query = normalize(q);
+    results.innerHTML = '';
+    if (!query) { results.classList.remove('active'); return; }
+    const matched = cards.filter(card => normalize(card.textContent).includes(query));
+    results.classList.add('active');
+    const count = document.createElement('div');
+    count.className = 'result-count';
+    count.textContent = matched.length ? `找到 ${matched.length} 个相关卡片` : '没有找到匹配卡片';
+    results.appendChild(count);
+    matched.slice(0, 80).forEach(card => {
+      const a = document.createElement('a');
+      a.href = '#' + card.id;
+      a.textContent = cardTitle(card);
+      a.addEventListener('click', () => { card.open = true; });
+      results.appendChild(a);
+    });
+  }
+
+  function applyFilters() {
+    const q = normalize(searchInput.value);
+    const searchActive = q.length > 0;
+    chapters.forEach(ch => {
+      const groupMatch = currentGroup === 'all' || ch.dataset.group === currentGroup;
+      ch.classList.toggle('hidden', !groupMatch);
+      const chCards = Array.from(ch.querySelectorAll('.card'));
+      let visibleCards = 0;
+      chCards.forEach(card => {
+        let cardMatch = true;
+        if (onlyMatches.checked && searchActive) {
+          cardMatch = normalize(card.textContent).includes(q);
+        }
+        card.classList.toggle('hidden', !cardMatch);
+        if (cardMatch) visibleCards += 1;
+      });
+      if (groupMatch && onlyMatches.checked && searchActive && chCards.length && visibleCards === 0) {
+        ch.classList.add('hidden');
+      }
+    });
+    updateResults(q);
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+  onlyMatches.addEventListener('change', applyFilters);
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      currentGroup = chip.dataset.group;
+      applyFilters();
+    });
+  });
+
+  document.getElementById('expandAll').addEventListener('click', () => cards.forEach(c => c.open = true));
+  document.getElementById('collapseAll').addEventListener('click', () => cards.forEach(c => c.open = false));
+
+  const navLinks = Array.from(document.querySelectorAll('.nav a'));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.toggle('current', a.getAttribute('href') === '#' + entry.target.id));
+      }
+    });
+  }, { rootMargin: '-15% 0px -72% 0px', threshold: 0 });
+  chapters.forEach(ch => observer.observe(ch));
+})();
+</script>
+</body>
+</html>
