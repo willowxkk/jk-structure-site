@@ -2,3 +2,4 @@
 几乎零基础的用GPT做的只有一个界面的个人自用的语言学习网页。
 主要用来整理日语和韩语句子里的结构成分，比如助词、句尾、连接、修饰、省略和口语表达。
 
+https://xkloveshin.github.io/jk-structure-site/
